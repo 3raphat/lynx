@@ -114,7 +114,7 @@ export default function CreateLinkModal({ ...props }: CreateLinkModalProps) {
                   <FormControl>
                     <div className="relative flex w-full">
                       <span className="hidden h-10 rounded-md rounded-r-none border border-r-0 border-input px-3 py-2 text-sm text-muted-foreground ring-offset-background sm:block">
-                        {`${getBaseUrl()}/s/`}
+                        {`${getBaseUrl().replace(/https?:\/\//, '')}/s/`}
                       </span>
                       <Input
                         placeholder="custom"
