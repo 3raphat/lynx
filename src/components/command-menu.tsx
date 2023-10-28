@@ -79,7 +79,11 @@ export default function CommandMenu({ ...props }: DialogProps) {
               <Icons.dashboard className="mr-2 h-4 w-4" />
               Dashboard
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push('/'))}>
+            <CommandItem
+              onSelect={() =>
+                runCommand(() => router.push('https://github.com/3raphat/lynx'))
+              }
+            >
               <Icons.github className="mr-2 h-4 w-4" />
               Repository
             </CommandItem>
