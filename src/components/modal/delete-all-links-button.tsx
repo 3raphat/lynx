@@ -30,7 +30,7 @@ import {
 import { cn, handleError } from '@/lib/utils'
 import { api } from '@/trpc/react'
 
-export default function DeleteAllLinks({ ...props }: ButtonProps) {
+export default function DeleteAllLinksButton({ ...props }: ButtonProps) {
   const router = useRouter()
 
   const [isDeleteLoading, setIsDeleteLoading] = useState(false)

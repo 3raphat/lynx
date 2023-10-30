@@ -4,7 +4,7 @@ import {
   LinkItem,
 } from '@/components/dashboard'
 import CreateLinkButton from '@/components/modal/create-link-button'
-import DeleteAllLinks from '@/components/modal/delete-all-links'
+import DeleteAllLinksButton from '@/components/modal/delete-all-links-button'
 import { api } from '@/trpc/server'
 
 export default async function Page() {
@@ -14,7 +14,7 @@ export default async function Page() {
     <DashboardShell>
       <DashboardHeader heading="Links" text="Create and manage links.">
         <div className="flex space-x-2">
-          <DeleteAllLinks />
+          <DeleteAllLinksButton />
           <CreateLinkButton />
         </div>
       </DashboardHeader>

@@ -1,6 +1,6 @@
 import { DashboardHeader, DashboardShell } from '@/components/dashboard'
 import CreateLinkButton from '@/components/modal/create-link-button'
-import DeleteAllLinks from '@/components/modal/delete-all-links'
+import DeleteAllLinksButton from '@/components/modal/delete-all-links-button'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export default function Loading() {
@@ -8,7 +8,7 @@ export default function Loading() {
     <DashboardShell>
       <DashboardHeader heading="Links" text="Create and manage links.">
         <div className="flex space-x-2">
-          <DeleteAllLinks disabled />
+          <DeleteAllLinksButton disabled />
           <CreateLinkButton disabled />
         </div>
       </DashboardHeader>
