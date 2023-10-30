@@ -1,6 +1,7 @@
 import { DashboardHeader, DashboardShell } from '@/components/dashboard'
 import CreateLinkButton from '@/components/modal/create-link-button'
 import DeleteAllLinksButton from '@/components/modal/delete-all-links-button'
+import { Select, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export default function Loading() {
@@ -8,6 +9,11 @@ export default function Loading() {
     <DashboardShell>
       <DashboardHeader heading="Links" text="Create and manage links.">
         <div className="flex space-x-2">
+          <Select disabled>
+            <SelectTrigger className="w-[180px]" disabled>
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+          </Select>
           <DeleteAllLinksButton disabled />
           <CreateLinkButton disabled />
         </div>
