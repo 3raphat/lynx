@@ -17,7 +17,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
-import { Button, buttonVariants } from '@/components/ui/button'
+import {
+  Button,
+  buttonVariants,
+  type ButtonProps,
+} from '@/components/ui/button'
 import {
   Tooltip,
   TooltipContent,
@@ -26,7 +30,7 @@ import {
 import { cn, handleError } from '@/lib/utils'
 import { api } from '@/trpc/react'
 
-export default function DeleteAllLinks() {
+export default function DeleteAllLinks({ ...props }: ButtonProps) {
   const router = useRouter()
 
   const [isDeleteLoading, setIsDeleteLoading] = useState(false)
@@ -53,7 +57,7 @@ export default function DeleteAllLinks() {
         <Tooltip>
           <TooltipTrigger asChild>
             <AlertDialogTrigger asChild>
-              <Button size="icon" variant="destructive">
+              <Button size="icon" variant="destructive" {...props}>
                 <Flame className="h-5 w-5" />
               </Button>
             </AlertDialogTrigger>

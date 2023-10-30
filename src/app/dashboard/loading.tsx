@@ -8,8 +8,8 @@ export default function Loading() {
     <DashboardShell>
       <DashboardHeader heading="Links" text="Create and manage links.">
         <div className="flex space-x-2">
-          <DeleteAllLinks />
-          <CreateLinkButton />
+          <DeleteAllLinks disabled />
+          <CreateLinkButton disabled />
         </div>
       </DashboardHeader>
       <div className="divide-y rounded-md border">
