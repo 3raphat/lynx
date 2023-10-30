@@ -18,6 +18,10 @@ export default function Loading() {
             <div className="space-y-3">
               <Skeleton className="h-5 w-2/5" />
               <Skeleton className="h-4 w-4/5" />
+              <div className="flex space-x-2">
+                <Skeleton className="h-4 w-[10%]" />
+                <Skeleton className="h-4 w-[10%]" />
+              </div>
             </div>
           </div>
         ))}
