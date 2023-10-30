@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { revalidatePath } from 'next/cache'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { type DialogProps } from '@radix-ui/react-dialog'
@@ -48,13 +46,10 @@ export default function CreateLinkModal({ ...props }: CreateLinkModalProps) {
     },
   })
 
-  const router = useRouter()
-
   const createLink = api.link.create.useMutation({
     onSuccess: () => {
       toast.success('Link created!')
       form.reset()
-      router.refresh()
     },
     onError: (error) => {
       handleError(error)

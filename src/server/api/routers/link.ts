@@ -71,27 +71,37 @@ export const linkRouter = createTRPCRouter({
       },
     })
   }),
-  getAll: protectedProcedure.query(({ ctx }) => {
-    return ctx.db.link.findMany({
-      where: {
-        userId: ctx.session.user.id,
-      },
-    })
-  }),
+  getAll: protectedProcedure
+    .input(
+      z
+        .object({
+          orderBy: z.enum(['createdAt', 'clicks', 'key']).optional(),
+          orderDirection: z.enum(['asc', 'desc']).optional(),
+        })
+        .optional()
+    )
+    .query(({ ctx, input }) => {
+      return ctx.db.link.findMany({
+        where: {
+          userId: ctx.session.user.id,
+        },
+        orderBy: {
+          [input?.orderBy ?? 'createdAt']: input?.orderDirection ?? 'desc',
+        },
+      })
+    }),
   fetch: publicProcedure
     .input(linkSchema.pick({ key: true }))
     .query(async ({ ctx, input }) => {
-      if (input.key !== 'dashboard') {
-        const link = await ctx.db.link.findUnique({
-          where: { key: input.key },
-        })
+      const link = await ctx.db.link.findUnique({
+        where: { key: input.key },
+      })
 
-        if (!link) {
-          throw new Error('Link not found')
-        }
-
-        return link
+      if (!link) {
+        throw new Error('Link not found')
       }
+
+      return link
     }),
   updateClick: protectedProcedure
     .input(linkSchema.pick({ key: true }))
