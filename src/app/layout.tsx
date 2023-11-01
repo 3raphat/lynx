@@ -4,7 +4,7 @@ import { type ReactNode } from 'react'
 import { headers } from 'next/headers'
 
 import Providers from '@/components/providers'
-import { cn } from '@/lib/utils'
+import { cn, getBaseUrl } from '@/lib/utils'
 import { inter, satoshi } from '@/styles/fonts'
 import { TRPCReactProvider } from '@/trpc/react'
 
@@ -17,6 +17,10 @@ export const metadata = {
     'Lynx is a URL shortener that allows you to create custom short links for any URL',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
   openGraph: {
+    title: 'Lynx - URL Shortener',
+    description:
+      'Lynx is a URL shortener that allows you to create custom short links for any URL',
+    type: 'website',
     images: [
       {
         url: '/api/og',
@@ -26,6 +30,21 @@ export const metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lynx - URL Shortener',
+    description:
+      'Lynx is a URL shortener that allows you to create custom short links for any URL',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Lynx - URL Shortener',
+      },
+    ],
+  },
+  metadataBase: new URL(getBaseUrl()),
 }
 
 interface RootLayoutProps {
