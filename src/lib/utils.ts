@@ -64,10 +64,26 @@ export function nFormatter(
     : '0' + suffix
 }
 
-export function getBaseUrl() {
-  if (typeof window !== 'undefined') return window.location.origin
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
-  return `http://localhost:${process.env.PORT ?? 3000}`
+export function getBaseUrl(
+  opts: { noProtocol?: boolean } = {
+    noProtocol: false,
+  }
+) {
+  const { noProtocol } = opts
+
+  if (typeof window !== 'undefined') {
+    return noProtocol
+      ? window.location.origin.replace(/https?:\/\//, '')
+      : window.location.origin
+  }
+  if (process.env.VERCEL_URL) {
+    return noProtocol
+      ? `https://${process.env.VERCEL_URL}`.replace(/https?:\/\//, '')
+      : `https://${process.env.VERCEL_URL}`
+  }
+  return noProtocol
+    ? `http://localhost:${process.env.PORT ?? 3000}`.replace(/https?:\/\//, '')
+    : `http://localhost:${process.env.PORT ?? 3000}`
 }
 
 export const formatDate = (data?: Date) => {
@@ -77,4 +93,9 @@ export const formatDate = (data?: Date) => {
     month: 'short',
     year: 'numeric',
   })
+}
+
+export const truncate = (str: string | null, length: number) => {
+  if (!str || str.length <= length) return str
+  return `${str.slice(0, length - 3)}...`
 }
