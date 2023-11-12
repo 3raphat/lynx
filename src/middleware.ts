@@ -39,5 +39,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ['/s/:key*'],
+  matcher: ['/s/:key*', '/dashboard'],
 }
