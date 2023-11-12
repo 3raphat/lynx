@@ -19,7 +19,8 @@ export default function Providers({ children }: ProvidersProps) {
       <SessionProvider>
         <TooltipProvider delayDuration={200}>
           {children}
-          <Toaster closeButton />
+          <Toaster closeButton className="dark:hidden" />
+          <Toaster closeButton theme="dark" className="hidden dark:block" />
           <Analytics />
         </TooltipProvider>
       </SessionProvider>
